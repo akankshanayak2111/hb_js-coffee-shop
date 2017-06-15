@@ -50,16 +50,20 @@
 
     var myImage = document.getElementById("coffee-image");
     var myRevenueMessage = document.getElementById("revenue");
+    var drinksOrdered = [];
+
 
     function coffeeBeans() {
         myImage.setAttribute("src", "static/coffee_beans.jpg");
     }
     
 
-    function makeCoffee() {
-        myImage.setAttribute("src", "static/coffee_mug.jpg");    
+    function coffeeMug() {
+        myImage.setAttribute("src", "static/coffee_mug.jpg");
+            
     }
 
+  
     function coffeeMachine() {
         myImage.setAttribute("src", "static/coffee_machine.jpg")
         
@@ -67,14 +71,16 @@
 
     coffeeBeans();
 
-    myImage.addEventListener('click', change_coffee_img);
+    myImage.addEventListener('click', function() {return makeCoffee("brew"); });
 
-
-    function change_coffee_img() {
+    function makeCoffee(drinkType) {
 
         coffeeMachine();
-        setTimeout(makeCoffee, 1500);
+        setTimeout(coffeeMug, 1500);
         setTimeout(coffeeBeans, 4000);
+        drinksOrdered.push(drinkType);
+        console.log(drinksOrdered);
+
 
     }
     
